@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* 禁止用户选中复制 */
+    .un-copy {
+      -webkit-user-select: none; 
+      -ms-user-select: none;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="copy">
+    <div>测试区域</div>
+    <div>测试区域</div>
+    <div>测试区域</div>
+    <div>测试区域</div>
+    <div>测试区域</div>
+    <div>测试区域</div>
+    <div>测试区域</div>
+    <div>测试区域</div>
+  </div>
+</body>
+<script>
+
+  //获取剪贴板数据方法
+  function getClipboardText(event){
+    var clipboardData = event.clipboardData || window.clipboardData;
+    // return clipboardData.getData('text');
+    return window.getSelection()
+  };
+  //设置剪贴板数据
+  function setClipboardText(event, value){
+    if(event.clipboardData){
+      return event.clipboardData.setData("text/plain", value);
+    }else if(window.clipboardData){
+      return window.clipboardData.setData("text", value);
+    }
+  };
+  //监听copy事件
+  addEventListener('copy',function(e){
+    e.preventDefault()
+    setClipboardText(e, getClipboardText(e)+"\n版权所属，违者必究！")
+  })
+</script>
+</html>
