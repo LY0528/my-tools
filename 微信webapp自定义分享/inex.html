@@ -16,7 +16,7 @@
    * @param {object} itemData 商品信息
    * */
   function getWxSign(url, itemData) {
-    mui.ajax('您的api接口', { // api => 就是customize_php文件夹下的getSign.pnp文件
+    mui.ajax('localhost:8080/customize_php/getSign.php', { // api => 就是customize_php文件夹下的getSign.pnp文件
       data: {
         url: url
       },
@@ -43,7 +43,7 @@
       timestamp: signData.timestamp, // 必填，生成签名的时间戳
       nonceStr: signData.nonceStr, // 必填，生成签名的随机串
       signature: signData.signature,// 必填，签名
-      jsApiList: [ // 必填，需要使用的JS接口列表
+      jsApiList: [ // 必填，需要使用的JS接口列表，列表远远不止这些，请看官方文档
         "onMenuShareTimeline", //分享给好友
         "onMenuShareAppMessage", //分享到朋友圈
         "onMenuShareQQ", //分享到QQ
@@ -84,11 +84,11 @@
       imgUrl: data.imageThumb, // 分享图标
       type: '', // 分享类型,music、video或link，不填默认为link
       dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-      success: function () { // 用户确认分享后执行的回调函数
-
+      success: function () { 
+        // 用户确认分享后执行的回调函数
       },
-      cancel: function () { // 用户取消分享后执行的回调函数
-        mui.toast('您已取消分享！')
+      cancel: function () { 
+        // 用户取消分享后执行的回调函数
       }
     });
   }
@@ -103,11 +103,11 @@
       title: data.name, // 分享标题
       link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
       imgUrl: data.imageThumb, // 分享图标
-      success: function () { // 用户确认分享后执行的回调函数
-
+      success: function () { 
+        // 用户确认分享后执行的回调函数
       },
-      cancel: function () { // 用户取消分享后执行的回调函数
-        mui.toast('您已取消分享！')
+      cancel: function () { 
+        // 用户取消分享后执行的回调函数
       }
     });
   }
@@ -123,11 +123,10 @@
       desc: data.name, // 分享描述
       link: url, // 分享链接
       imgUrl: data.imageThumb, // 分享图标
-      success: function () { // 用户确认分享后执行的回调函数
-
+      success: function () { 
       },
-      cancel: function () { // 用户取消分享后执行的回调函数
-        mui.toast('您已取消分享！')
+      cancel: function () { 
+        // 用户取消分享后执行的回调函数
       }
     });
   }
@@ -146,8 +145,8 @@
       success: function () {
         // 用户确认分享后执行的回调函数
       },
-      cancel: function () { // 用户取消分享后执行的回调函数
-        mui.toast('您已取消分享！')
+      cancel: function () { 
+        // 用户取消分享后执行的回调函数
       }
     });
   }
