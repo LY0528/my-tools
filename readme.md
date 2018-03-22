@@ -30,7 +30,11 @@ function isObj (o) { //是否对象
 }
 
 function isArray (o) { //是否数组
-    return Object.prototype.toString.call(o).slice(8, -1) === 'Array'
+    if (Array.isArray) {
+        return Array.isArray(arr)  
+    } else {
+        return Object.prototype.toString.call(arr) === '[object Array]'
+    }
 }
 ```
 2、格式化时间
